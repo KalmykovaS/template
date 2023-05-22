@@ -1,0 +1,96 @@
+@import "src/style/common/vars";
+
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 40px;
+  padding-left: 40px;
+
+  @media only screen and (max-width: $bp-md) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+.content {
+  padding-top: 100px;
+
+  @media only screen and (max-width: $bp-md) {
+    padding-top: 72px;
+  }
+
+  &--sm {
+    padding-top: 53px;
+
+    @media only screen and (max-width: $bp-md) {
+      padding-top: 37px;
+    }
+  }
+}
+
+.section {
+  margin-bottom: 50px;
+
+  @media only screen and (max-width: $bp-md) {
+    margin-bottom: 20px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 0;
+
+    @media only screen and (max-width: $bp-lg) {
+      padding: 16px 0;
+    }
+  }
+
+  &__header-left {
+    padding-right: 15px;
+
+    @media only screen and (max-width: $bp-md) {
+      padding-right: 0;
+    }
+  }
+
+  &__header-right {
+    @media only screen and (max-width: $bp-md) {
+      display: none;
+    }
+  }
+
+  &__description {
+    padding-top: 24px;
+
+    @media only screen and (max-width: $bp-md) {
+      padding-top: 16px;
+    }
+  }
+
+  &__inner {
+    padding: 50px 40px 40px;
+
+    @media only screen and (max-width: $bp-lg) {
+      padding: 40px 24px 24px;
+    }
+  }
+}

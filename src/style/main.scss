@@ -1,0 +1,87 @@
+@import "src/style/common/fonts";
+@import "src/style/common/vars";
+@import "src/style/animation";
+
+body {
+  font-family: $main;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: $white;
+  color: $dark-grey;
+
+  min-height: 100vh;
+  min-width: 320px;
+
+  cursor: default;
+}
+
+body, h1, h2, h3, h4, p, ul {
+  margin: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-family: $bold;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a {
+  text-decoration: none;
+  font-family: $main;
+}
+
+input:focus-visible, input:focus, a:focus, a:visited {
+  outline: none;
+}
+
+input {
+  cursor: pointer;
+  &:focus::placeholder {
+    opacity: 0;
+  }
+}
+
+textarea {
+  outline: none;
+  resize: none;
+  &:focus {
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+}
+
+::placeholder{
+  font-family: $main;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+picture{
+  font-size: 0;
+}
+
+blockquote{
+  margin: 0;
+}
+
+@import "src/style/common/global";

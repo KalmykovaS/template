@@ -1,0 +1,27 @@
+//colors
+$white: #ffffff;
+$dark-grey: #252B33;
+$light-grey: #999999;
+$blue: #005693;
+$light-blue: #0078CD;
+
+$default-transition: .3s ease-in-out;
+$transition-timing-func: cubic-bezier(.05,.73,.48,.97);
+
+//fonts
+$main: 'Verdana', Arial, sans-serif;
+$medium: 'Geometria-Medium', Arial, sans-serif;
+$bold: 'Geometria-Bold', Arial, sans-serif;
+
+//breakpoints
+$bp-xl: 1920px;
+$bp-lg: 1339px;
+$bp-md: 1023px;
+$bp-sm: 767px;
+$bp-xs: 576px;
+$bp-xxs: 479px;
+
+// пример
+@media only screen and (max-width: $bp-md) {
+
+}

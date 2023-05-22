@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "Verdana";
+    font-weight: 400;
+    src: url("./fonts/Verdana.woff") format("woff2"), url("../../static/fonts/Verdana.woff") format("woff");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Geometria-Medium";
+    font-weight: 500;
+    src: url("./fonts/Geometria-Medium.woff") format("woff2"), url("../../static/fonts/Geometria-Medium.woff") format("woff");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Geometria-Bold";
+    font-weight: 700;
+    src: url("./fonts/Geometria-Bold.woff") format("woff2"), url("../../static/fonts/Geometria-Bold.woff") format("woff");
+    font-style: normal;
+    font-display: swap;
+}
