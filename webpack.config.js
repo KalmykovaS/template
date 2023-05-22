@@ -1,13 +1,13 @@
 const path = require('path');
+const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const SpritePlugin = require('svg-sprite-loader/plugin');
 const ImageminWebpWebpackPlugin= require('imagemin-webp-webpack-plugin');
 
-const { pages }= require('./webpack-helpers/HtmlFabric.js');
+const { pages } = require('./webpack-helpers/HtmlFabric.js');
 
 const htmlFabric = (object, pages) => {
     const totalPages = []
@@ -25,22 +25,23 @@ const htmlFabric = (object, pages) => {
 }
 
 module.exports = {
-    target: "web",
-    mode:'development',
-    devtool:'source-map',
+    target: 'web',
+    mode: 'development',
+    devtool: 'source-map',
     stats: {
         children: true,
     },
     resolve: {
         alias: {
-            util: require.resolve("util/"),
+            util: require.resolve('util/'),
         },
     },
     watchOptions: {
         ignored: '**/node_modules',
     },
     entry: {
-        index: ['@babel/polyfill', '/src/app/index.js']
+        index: ['@babel/polyfill', '/src/app/index.js'],
+        sprite: glob.sync(path.resolve(__dirname, './src/static/img/svg/*.svg')),
     },
     output: {
         filename: 'script/[name].js',
@@ -48,6 +49,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new SpritePlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].css'
         }),
@@ -62,14 +64,10 @@ module.exports = {
             config: [{
                 test: /\.(jpe?g|png)/,
                 options: {
-                    quality:  90
+                    quality: 90,
                 }
             }],
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new SpritePlugin({
-            plainSprite: true,
-        })
     ],
     module:{
         rules: [
@@ -109,16 +107,13 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(svg)$/,
-                use:[{
-                    loader: 'svg-sprite-loader',
-                    options:{
-                        extract: true,
-                        outputPath: '/img/svg/',
-                        publicPath: './'
-                    }
-
-                }]
+                test: /\.svg$/,
+                loader: 'svg-sprite-loader',
+                include: path.resolve(__dirname, './src/static/img/svg'),
+                options: {
+                    extract: true,
+                    spriteFilename: 'img/svg/sprite.svg'
+                },
             },
             {
                 test: /\.(svg)$/,
@@ -133,11 +128,11 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: [
-                            ['@babel/preset-env', { targets: "defaults" }]
+                            ['@babel/preset-env', { targets: 'defaults' }]
                         ]
                     }
                 }
-            }
+            },
         ]
     },
     devServer: {
